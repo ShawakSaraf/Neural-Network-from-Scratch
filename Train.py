@@ -32,17 +32,3 @@ if 1:
 print( mlp.model_accuracy() )
 print( "Prediction: ", mlp.predict( test_data[19][0] ) )
 print( "Ground Truth: ", test_data[19][1] )
-# print( dir(MLP) )
-
-# class A():
-# 	def __init__(self):
-# 		self.name = "Shawak"
-# class B(A):
-# 	def __init__(self, a):
-# 		super().__init__()
-# 	def print(self):
-# 		print( "Old: ", self.name )
-# 		self.name = "Saraf"
-# a = A()
-# B(a).print()
-# print( "new: ", a.name )
