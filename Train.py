@@ -1,6 +1,7 @@
 import mnist_loader
-import Multi_Layer_Perceptron as mlp
-from Multi_Layer_Perceptron import MLP, SGD, CrossEntropyCost, Sigmoid
+import MultiLayerPerceptron as mlp
+from MultiLayerPerceptron import MLP, Monitor
+from Optimizer import SGD, CrossEntropyCost, Sigmoid
 import numpy as np
 
 train_data, val_data, test_data = mnist_loader.load_data_wrapper()
@@ -12,23 +13,26 @@ model = MLP(
 	learning_rate = 0.1,
 	lmbda         = 5.0,
 )
-	
-if 1:
-	evaluation_cost, evaluation_accuracy, \
-	training_cost, training_accuracy = \
-	model.fit(
-		train_data,
-		evaluation_data             = val_data,
-		epochs                      = 50,
-		batch_size                  = 32,
-		save                        = False,
-		continue_LastSaved          = True,
-		monitor_evaluation_cost     = True,
-		monitor_evaluation_accuracy = True,
-		monitor_training_cost       = True,
-		monitor_training_accuracy   = True
+
+monitor = Monitor(
+		val_cost       = True,
+		val_accuracy   = True,
+		train_cost     = True,
+		train_accuracy = True
 	)
 
-print( mlp.model_accuracy() )
+if 1:
+	model.fit(
+		train_data     = train_data[:1000],
+		val_data       = val_data,
+		epochs         = 5,
+		batch_size     = 32,
+		save_model     = False,
+		continue_train = True,
+		monitor        = monitor
+	)
+	evaluation_cost, evaluation_accuracy, \
+	training_cost, training_accuracy = monitor.history()
+
 print( "Prediction: ", mlp.predict( test_data[19][0] ) )
 print( "Ground Truth: ", test_data[19][1] )
