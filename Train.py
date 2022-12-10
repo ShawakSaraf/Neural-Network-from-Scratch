@@ -1,14 +1,10 @@
-from statistics import mode
-from regex import F
 import mnist_loader
 import MultiLayerPerceptron as mlp
 from MultiLayerPerceptron import MLP, Monitor
-from Optimizer import SGD, CrossEntropyLoss, Sigmoid
+from Optimizer import SGD, CrossEntropyLoss, Sigmoid, RELU
 import numpy as np
 
-train_data, val_data, test_data = mnist_loader.load_data_wrapper()
-train_data, test_data = np.array(train_data, dtype=object), np.array(test_data, dtype=object)
-train_data = np.concatenate( [train_data, test_data], axis=0, dtype=object )
+train_data, val_data = mnist_loader.load_data_wrapper()
 
 model = MLP( 
 	layers        = [784, 30, 10],
@@ -20,10 +16,10 @@ model = MLP(
 )
 
 monitor = Monitor(
-		training   = True,
-		validation = True,
-		save       = False,
-	)
+	training   = True,
+	validation = True,
+	save       = False,
+)
 
 if 1:
 	model.fit(

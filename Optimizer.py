@@ -73,18 +73,25 @@ class SGD():
 
 		return nabla_W, nabla_B
 
-class CrossEntropyLoss( object ):
+class CrossEntropyLoss():
 	@staticmethod
 	def func(a, y):
-		return np.sum( np.nan_to_num( -y*np.log(a) - (1-y) * np.log(1-a) ) )
+		return np.sum( np.nan_to_num( -y * np.log(a) - (1-y) * np.log(1-a) ) )
 
 	@staticmethod
 	def delta(a, y):
 		return ( a - y )
 	
-class Sigmoid( object ):
+class Sigmoid():
 	def __call__( self, z ):
 		return 1.0 / ( 1.0 + np.exp(-z) )
 
 	def prime( self, z ):
 		return self( z ) * ( 1.0 - self( z ) )
+
+class RELU():
+	def __call__( self, z ):
+		return np.where( z > 0.0, z, 0.0 )
+
+	def prime( self, z ):
+		return np.where(z > 0.0, 1.0, 0.0)

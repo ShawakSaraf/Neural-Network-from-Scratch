@@ -128,23 +128,22 @@ class Monitor():
 
 		if ( self.save ): 
 			self.save_model()
-		
 			if ( self.model.is_last_epoch ):
 				self.model.weights, self.model.biases = self.max_w, self.max_b
 				self.save_model()
 
 	def save_model( self ):
 		data = {
-	        "layers"       : self.model.layers,
-	        "weights"      : [ w.tolist() for w in self.model.weights ],
-	        "biases"       : [ b.tolist() for b in self.model.biases ],
-	        "optimizer"    : str(self.model.optimizer.__class__.__name__),
-	        "loss"         : str(self.model.loss.__class__.__name__),
-	        "activation"   : str(self.model.activation.__class__.__name__),
-	        "learning_rate": self.model.learning_rate,
-	        "lmbda"        : self.model.lmbda,
-	        "accuracy"     : self.maxAccuracy,
-			}
+			"layers"       : self.model.layers,
+			"weights"      : [ w.tolist() for w in self.model.weights ],
+			"biases"       : [ b.tolist() for b in self.model.biases ],
+			"optimizer"    : str(self.model.optimizer.__class__.__name__),
+			"loss"         : str(self.model.loss.__class__.__name__),
+			"activation"   : str(self.model.activation.__class__.__name__),
+			"learning_rate": self.model.learning_rate,
+			"lmbda"        : self.model.lmbda,
+			"accuracy"     : self.maxAccuracy,
+		}
 		with open(trained_model_file, "w") as f:
 			json.dump(data, f)
 
@@ -153,23 +152,24 @@ class Monitor():
 			self.training_loss, self.training_accuracy
 
 	def accuracy(self, data, convert=False):
-		if convert:
-		    results = [(np.argmax(self.model.optimizer.feed_forward(x)), np.argmax(y))
-		               for (x, y) in tqdm(data, desc="Accuracy", ncols=75, leave=False, position=1)]
-		else:
-		    results = [(np.argmax(self.model.optimizer.feed_forward(x)), y)
-		                for (x, y) in tqdm(data, desc="Accuracy", ncols=75, leave=False, position=1)]
-		return sum(int(x == y) for (x, y) in results)
+		results = [
+			( np.argmax( self.model.optimizer.feed_forward( x ) ), np.argmax( y ) )
+			for x, y in tqdm( data, desc="Accuracy", ncols=75, leave=False, position=1 )
+		] if convert else [
+			( np.argmax( self.model.optimizer.feed_forward( x ) ), y )
+			for x, y in tqdm( data, desc="Accuracy", ncols=75, leave=False, position=1 )
+		]
+		return sum( int( x == y ) for ( x, y ) in results )
 
 	def total_loss(self, data, convert=False):
 		loss = 0.0
 		for x, y in tqdm(data, desc="Cost", ncols=75, leave=False, position=1):
 			a = self.model.optimizer.feed_forward(x)
-			if convert:
-				y = vectorized_result(y)
+			y = vectorized_result(y) if convert else y
 			loss += self.model.loss.func(a, y)/len(data)
-		loss += 0.5*( self.model.optimizer.lmbda / len( data ) )*sum(
-		    np.linalg.norm(w)**2 for w in self.model.weights)
+
+		loss += 0.5*( self.model.optimizer.lmbda / len( data ) ) * \
+			sum( np.linalg.norm(w)**2 for w in self.model.weights )
 		return loss
 
 def load_model():
