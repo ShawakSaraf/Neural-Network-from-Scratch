@@ -8,3 +8,4 @@ This Multi-Layer Perceptron is capable of performing basic tasks such as image c
  
 https://user-images.githubusercontent.com/74816223/206852868-7cf65399-7504-4640-910c-1b9d97597dab.mp4
 
+![vision_2](https://user-images.githubusercontent.com/74816223/206854772-a0c6a9b7-5f09-418c-82d5-873ee786d3d0.gif)
