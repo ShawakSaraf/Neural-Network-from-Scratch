@@ -54,10 +54,6 @@ class SGD():
 		return a
 	
 	def back_propogation( self, As, Zs, labels ):
-		"""
-		Calculates the gradient of loss function with respect to each variable by back propogation
-		and returns gradients. 
-		"""
 		nabla_W = [ np.zeros( w.shape ) for w in self.model.weights ]
 		nabla_B = [ np.zeros( b.shape ) for b in self.model.biases ]
 
