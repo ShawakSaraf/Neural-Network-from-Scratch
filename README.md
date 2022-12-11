@@ -19,9 +19,11 @@ A basic neural network is composed of multiple layers of interconnected nodes ca
 
 You can see there's an input layer with neurons, connected to the neurons in the hidden layers, those hidden layers themselves are connected to each other and the neurons of the output layer. The arrows are the connections and the thickness of the arrow shows the weight or importance of that connection. Excluding input layer, each layer also have an activation funtion, which depending on the input, tells the neurons to be more active or less active. The more active a neuron, the bigger its output to the next layer, and that helps the network make some decision rather than the other, from an output space. 
 
-So we input the data, the hidden layers apply some transformation to the data and output the result.  
+So we input the data, the hidden layers apply some transformation to the data and output the result.
+
 But what does it mean to train a network?    
 Well, we train the network to find the values of the weights of the connections so that we get the desired output.  
+
 And how do we do that?  
 In our dataset we've got two things, the data - eg. images the cats, and the labels - what color the perticular cat is. The labels are the desired output we want from a network, so when a network outputs a prediction, a funtion compares the labels to the pardiction, and tells the network how to change its weights so that the prediction gets closer to the actual labels. We call it Loss or Cost function. The closer the output of the loss function is to zero, the closer the predictions are to the labels.
 
