@@ -14,8 +14,7 @@ Machine learning is everywhere these days, but "machine leaning" is an umbrella 
 
 A basic neural network is composed of multiple layers of interconnected nodes called "neurons", where each layer is fully connected to the next, i.e. each neuron in one layer is connected with every neuron in next layer. So, Each neuron in a layer receives input from every neuron in the previous layer, performs a simple calculation on that input, and then sends the result to the next layer. By passing the input data through many layers of neurons, a neural network is able to learn to recognize complex patterns and make predictions or decisions based on that data.
 
-![Neural_Network_AdobeExpress](https://user-images.githubusercontent.com/74816223/206890857-c01f8aa7-211a-4187-b965-bf4fbab4d22e.gif)
-![Neural_Network2_AdobeExpress](https://user-images.githubusercontent.com/74816223/206891743-1553aec1-001b-424c-a2d8-a68abbc54dd7.gif)
+<img src="https://user-images.githubusercontent.com/74816223/206891743-1553aec1-001b-424c-a2d8-a68abbc54dd7.gif" width="360" height="360"/> <img src="https://user-images.githubusercontent.com/74816223/206890857-c01f8aa7-211a-4187-b965-bf4fbab4d22e.gif" width="360" height="202.5"/>
 
 You can see there's an input layer with neurons, connected to the neurons in the hidden layers, those hidden layers themselves are connected to each other and the neurons of the output layer. The arrows are the connections and the thickness of the arrow shows the weight or importance of that connection. Excluding input layer, each layer also have an activation funtion, which depending on the input, tells the neurons to be more active or less active. The more active a neuron, the bigger its output to the next layer, and that helps the network make some decision rather than the other, from an output space. 
 
