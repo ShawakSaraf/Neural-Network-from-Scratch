@@ -30,7 +30,7 @@ This small project came into existence when I first started doing research about
 ## Data
 The MNIST dataset is provided in mnist.pkl.gz file and loaded using the mnist_loader module. The dataset is split into a training set and a validation set, which are loaded as follows:
 
-```
+```python
 train_data, val_data = mnist_loader.load_data_wrapper()
 ````
 ## Model
@@ -45,7 +45,7 @@ lmbda         : the regularization parameter.
 ```
 For example:
 
-```
+```python
 model = MLP( 
 	layers        = [ 784, 30, 10 ],
 	optimizer     = SGD,
@@ -68,7 +68,7 @@ monitor       : a Monitor object that tracks the progress of training and valida
 ```
 For example:
 
-```
+```python
 monitor = Monitor(
 	training   = True,
 	validation = True,
@@ -87,13 +87,13 @@ model.fit(
 ## Evaluation
 To evaluate the model, use the history method of the Monitor object to retrieve the cost and accuracy for both training and validation.
 
-```
+```python
 evaluation_cost, evaluation_accuracy, \
 training_cost, training_accuracy = monitor.history()
 ```
 ## Prediction
 To make a prediction for a single input x, use the predict method after training the model or load the pre-trained model.
-```
+```python
 model = mlp.load_model()
 print( "Prediction: ", model.predict( val_data[140][0] ) )
 print( "Ground Truth: ", val_data[140][1]  
