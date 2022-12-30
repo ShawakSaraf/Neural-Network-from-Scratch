@@ -1,4 +1,4 @@
-# Understanding Neural Networks
+# Building a Neural Network from Scratch
 
 You know the rite of passage everyone has to go through when they first set foot into the world of programming.  
 The iconic, print("Hello World!").
