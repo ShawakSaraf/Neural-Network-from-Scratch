@@ -1,4 +1,9 @@
-# Building a Neural Network from Scratch
+<h1 align=center>Building a Neural Network from Scratch</h1>
+
+<p align="center">
+	<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/></a>
+	<a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=NumPy&logoColor=white"/></a>
+</p>
 
 You know the rite of passage everyone has to go through when they first set foot into the world of programming.  
 The iconic, print("Hello World!").
@@ -23,6 +28,8 @@ By implementing a neural network using only the Numpy library, I was able to und
 
 This small project came into existence when I first started doing research about neural networks and found the absolutely incredible book, ["Neural Networks and Deep Learning"](http://neuralnetworksanddeeplearning.com/) by Michael Nielsen, and the amazing YouTube series, ["Neural Networks"](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) by 3blue1brown. They did such an amazing job of explaining the magic behind these networks in easy-to-follow language. And most importantly in the book, Michael Nielsen provided the code, so you don't get stuck. I used it as a reference to do my own implementation of neural networks.
 
+I've also written a blog, ["Understanding Neural Networks"](https://lookingisnotenough.com/UnderstandingNeuralNetworks), where I try to build an intuitive understanding of the inner workings of neural networks without getting bogged down into technical details.  
+Have a read if this interests you.
 
 # Usage
 1. Clone this repository to your local machine.
@@ -31,7 +38,7 @@ This small project came into existence when I first started doing research about
 ## Data
 The MNIST dataset is provided in mnist.pkl.gz file and loaded using the mnist_loader module. The dataset is split into a training set and a validation set, which are loaded as follows:
 
-```
+```python
 train_data, val_data = mnist_loader.load_data_wrapper()
 ````
 ## Model
@@ -46,7 +53,7 @@ lmbda         : the regularization parameter.
 ```
 For example:
 
-```
+```python
 model = MLP( 
 	layers        = [ 784, 30, 10 ],
 	optimizer     = SGD,
@@ -69,7 +76,7 @@ monitor       : a Monitor object that tracks the progress of training and valida
 ```
 For example:
 
-```
+```python
 monitor = Monitor(
 	training   = True,
 	validation = True,
@@ -88,13 +95,13 @@ model.fit(
 ## Evaluation
 To evaluate the model, use the history method of the Monitor object to retrieve the cost and accuracy for both training and validation.
 
-```
+```python
 evaluation_cost, evaluation_accuracy, \
 training_cost, training_accuracy = monitor.history()
 ```
 ## Prediction
 To make a prediction for a single input x, use the predict method after training the model or load the pre-trained model.
-```
+```python
 model = mlp.load_model()
 print( "Prediction: ", model.predict( val_data[140][0] ) )
 print( "Ground Truth: ", val_data[140][1]  
