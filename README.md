@@ -1,4 +1,4 @@
-# Understanding Neural Networks
+# Building a Neural Network from Scratch
 
 You know the rite of passage everyone has to go through when they first set foot into the world of programming.  
 The iconic, print("Hello World!").
@@ -22,6 +22,7 @@ I used the famous MNIST dataset for training, which consists of 70,000 images of
 By implementing a neural network using only the Numpy library, I was able to understand the core principles and mathematics of how a neural network works without the complexities of modern machine learning frameworks. Numpy is a powerful library for numerical computing in Python, but it does not provide high-level abstractions for building and training neural networks. As a result, I had a lot of fun implementing the core components of neural networks from scratch.
 
 This small project came into existence when I first started doing research about neural networks and found the absolutely incredible book, ["Neural Networks and Deep Learning"](http://neuralnetworksanddeeplearning.com/) by Michael Nielsen, and the amazing YouTube series, ["Neural Networks"](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) by 3blue1brown. They did such an amazing job of explaining the magic behind these networks in easy-to-follow language. And most importantly in the book, Michael Nielsen provided the code, so you don't get stuck. I used it as a reference to do my own implementation of neural networks.
+
 
 # Usage
 1. Clone this repository to your local machine.
