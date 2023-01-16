@@ -1,7 +1,7 @@
 import numpy as np
 from tqdm import tqdm
 from Optimizer import SGD, CrossEntropyLoss, Sigmoid
-import random, time, json, sys, os
+import time, json, sys, os
 
 curr_dir = os.path.dirname( os.path.abspath( __file__ ) )
 trained_model_file = curr_dir+r'\TrainedModelData.sav'
@@ -84,7 +84,7 @@ class MLP( object ):
 		print( "Last saved, Hidden neurons: ", len( self.weights[0] ), ", ", data["accuracy"] )
 	
 	def __make_batches( self, data, batch_size ):
-		random.shuffle( data )
+		np.random.shuffle( data )
 		# Creating batches out of training data
 		batches = [
 			data[ k : k + batch_size ]

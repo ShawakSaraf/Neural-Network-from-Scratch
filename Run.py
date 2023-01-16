@@ -45,5 +45,9 @@ if 1:
 	training_cost, training_accuracy = monitor.history()
 
 model = mlp.load_model()
-print( "Prediction: ", model.predict( val_data[140][0] ) )
-print( "Ground Truth: ", val_data[140][1] )
+n_preds = 10
+np.random.shuffle(val_data)
+
+print( f'{"Prediction":15s} {"Ground Truth"}' )
+for i in range(n_preds):
+	print( f'{"":5s}{ str(model.predict( val_data[i][0] )):16s} {val_data[i][1]}' )
