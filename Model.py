@@ -105,10 +105,11 @@ class Monitor():
 	and for printing the current values of these metrics. 
 	When the __call__ method of the Monitor instance is invoked, it updates the relevant metrics and prints them.
 	"""
-	def __init__( self, training=False, validation=True, save=False ):
+	def __init__( self, training=False, validation=True, save=False, file_path=trained_model_file ):
 		self.training   = training
 		self.validation = validation
 		self.save       = save
+		self.file_path  = file_path
 
 		self.evaluation_loss, self.evaluation_accuracy = [], []
 		self.training_loss, self.training_accuracy = [], []
@@ -167,12 +168,12 @@ class Monitor():
 			self.max_w, self.max_b = self.model.weights, self.model.biases
 
 		if ( self.save ): 
-			self.save_model()
+			self.save_model(self.file_path)
 			if ( self.model.is_last_epoch ):
 				self.model.weights, self.model.biases = self.max_w, self.max_b
-				self.save_model()
+				self.save_model(self.file_path)
 
-	def save_model( self ):
+	def save_model( self, file_path=trained_model_file ):
 		"""
 		Saves the model variables.
 		"""
@@ -187,7 +188,7 @@ class Monitor():
 			"lmbda"        : self.model.lmbda,
 			"accuracy"     : self.maxAccuracy,
 		}
-		with open(trained_model_file, "w") as f:
+		with open(file_path, "w") as f:
 			json.dump(data, f)
 
 	def history(self):
