@@ -55,7 +55,7 @@ class MLP( object ):
 		if ( continue_train ):
 			self.__load_viriables()
 	
-		epochs_progress_bar = tqdm( range(epochs), ncols=85, position=0 )
+		epochs_progress_bar = tqdm( range(epochs), position=0 )
 		for epoch in epochs_progress_bar:
 			"""
 			This is the training loop for our neural network. 
@@ -69,7 +69,7 @@ class MLP( object ):
 			epochs_progress_bar.set_description( f'Epoch {epoch+1}' )
 			batches = self.__make_batches( train_data, batch_size )
 
-			batches_progress_bar = tqdm(batches, desc=f'Batch', ncols=75, position=1, ascii=False, leave=False)
+			batches_progress_bar = tqdm(batches, desc=f'Batch', position=1, ascii=False, leave=False)
 			for batch in batches_progress_bar:
 				self.optimizer( batch, self.num_train_data )
 
@@ -207,10 +207,10 @@ class Monitor():
 		"""
 		results = [
 			( np.argmax( self.model.optimizer.forward_propagation( x ) ), np.argmax( y ) )
-			for x, y in tqdm( data, desc="Accuracy", ncols=75, leave=False, position=1 )
+			for x, y in tqdm( data, desc="Accuracy", leave=False, position=1 )
 		] if convert else [
 			( np.argmax( self.model.optimizer.forward_propagation( x ) ), y )
-			for x, y in tqdm( data, desc="Accuracy", ncols=75, leave=False, position=1 )
+			for x, y in tqdm( data, desc="Accuracy", leave=False, position=1 )
 		]
 		return sum( int( x == y ) for ( x, y ) in results )
 
@@ -220,7 +220,7 @@ class Monitor():
 		It also includes a regularization term (lambda) to penalize large weights.
 		"""
 		loss = 0.0
-		for x, y in tqdm(data, desc="Cost", ncols=75, leave=False, position=1):
+		for x, y in tqdm(data, desc="Cost", leave=False, position=1):
 			a = self.model.optimizer.forward_propagation(x)
 			y = vectorized_result(y) if convert else y
 			loss += self.model.loss.func(a, y)/len(data)
