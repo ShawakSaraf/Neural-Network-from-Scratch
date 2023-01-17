@@ -163,8 +163,11 @@ class Monitor():
 				f'{str(epoch+1):3s}: {"val_loss"}: {str(v_loss):4s} — {"val_accuracy"}: {str(v_accuracy):4s} — {epoch_time}' 
 			)
 
-		if ( self.val_accuracy > self.maxAccuracy ):
-			self.maxAccuracy = self.val_accuracy
+		if self.is_val_data & ( self.val_accuracy > self.maxAccuracy ):
+			self.maxAccuracy = self.val_accuracy/self.num_val_data
+			self.max_w, self.max_b = self.model.weights, self.model.biases
+		elif self.train_accuracy > self.maxAccuracy:
+			self.maxAccuracy = self.train_accuracy/self.num_train_data
 			self.max_w, self.max_b = self.model.weights, self.model.biases
 
 		if ( self.save ): 
@@ -186,7 +189,7 @@ class Monitor():
 			"activation"   : str( self.model.activation.__class__.__name__ ),
 			"learning_rate": self.model.learning_rate,
 			"lmbda"        : self.model.lmbda,
-			"accuracy"     : self.maxAccuracy,
+			"accuracy"     : self.maxAccuracy*100,
 		}
 		with open(file_path, "w") as f:
 			json.dump(data, f)

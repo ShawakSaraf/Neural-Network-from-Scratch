@@ -51,7 +51,6 @@ np.random.shuffle(val_data)
 
 fig, axes = plt.subplots(1,n_preds, figsize=(10,2))
 
-
 print( f'{"Prediction":15s} {"Ground Truth"}' )
 for i,ax in enumerate(axes.flat):
 	ax.imshow( np.reshape(val_data[i][0], (28,28)), cmap="Greys" )
