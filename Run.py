@@ -3,6 +3,7 @@ import Model as mlp
 from Model import MLP, Monitor
 from Optimizer import SGD, CrossEntropyLoss, Sigmoid
 import numpy as np
+import matplotlib.pyplot as plt
 
 """
 This script imports several classes, including MLP, SGD, CrossEntropyLoss, and Sigmoid, 
@@ -32,7 +33,7 @@ monitor = Monitor(
 	save       = False,
 )
 
-if 1:
+if 0:
 	model.fit(
 		train_data     = train_data[:10000],
 		val_data       = val_data[:1000],
@@ -48,6 +49,16 @@ model = mlp.load_model()
 n_preds = 10
 np.random.shuffle(val_data)
 
+fig, axes = plt.subplots(1,n_preds, figsize=(10,2))
+
+
 print( f'{"Prediction":15s} {"Ground Truth"}' )
-for i in range(n_preds):
+for i,ax in enumerate(axes.flat):
+	ax.imshow( np.reshape(val_data[i][0], (28,28)), cmap="Greys" )
+	ax.get_yaxis().set_visible(False)
+
+	prediciton = 'Pred: ' + str(model.predict( val_data[i][0] )) if i==0 else str(model.predict( val_data[i][0] ))
+	ax.set_xlabel( prediciton, labelpad=18, size=15 )
 	print( f'{"":5s}{ str(model.predict( val_data[i][0] )):16s} {val_data[i][1]}' )
+
+plt.show()

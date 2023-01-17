@@ -1,5 +1,5 @@
 <h1 align=center>Building a Neural Network from Scratch</h1>
-
+![layer_activation](https://i.imgur.com/cIzWXd4.png)
 <p align="center">
 	<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/></a>
 	<a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=NumPy&logoColor=white"/></a>
