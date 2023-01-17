@@ -29,9 +29,10 @@ By implementing a neural network using only the Numpy library, I was able to und
 
 This small project came into existence when I first started doing research about neural networks and found the absolutely incredible book, ["Neural Networks and Deep Learning"](http://neuralnetworksanddeeplearning.com/) by Michael Nielsen, and the amazing YouTube series, ["Neural Networks"](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) by 3blue1brown. They did such an amazing job of explaining the magic behind these networks in easy-to-follow language. And most importantly in the book, Michael Nielsen provided the code, so you don't get stuck. I used it as a reference to do my own implementation of neural networks.
 
-I've also written a blog, ["Understanding Neural Networks"](https://lookingisnotenough.com/UnderstandingNeuralNetworks), where I try to build an intuitive understanding of the inner workings of neural networks without getting bogged down into technical details.  
+I've also written a blog, [**"Understanding Neural Networks"**](https://lookingisnotenough.com/UnderstandingNeuralNetworks), where I try to build an intuitive understanding of the inner workings of neural networks without getting bogged down into technical details.  
 Have a read if this interests you.  
-Another way to play with the code is the ["Google Colab Notebook"](https://colab.research.google.com/drive/1B9Uu9A-O6efN8_oqYGYmU8iiD-JK80dt) I've made.
+
+Another way to play with the code is the [**Google Colab Notebook**](https://colab.research.google.com/drive/1B9Uu9A-O6efN8_oqYGYmU8iiD-JK80dt) I've made, if you don't want to hassle with cloning the repository and installing all the dependencies just check the notebook out.
 
 # Usage
 1. Clone this repository to your local machine.
